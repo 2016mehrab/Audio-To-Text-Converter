@@ -8,6 +8,7 @@ import com.samurai74.audiototextconverter.service.StreamTranscriptionService;
 import com.samurai74.audiototextconverter.service.TranscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Service
-@Primary
+@Qualifier("voskTranscriber")
 @RequiredArgsConstructor
 @Slf4j
 public class VoskTranscriptionService implements TranscriptionService , StreamTranscriptionService {
