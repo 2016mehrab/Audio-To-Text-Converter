@@ -1,7 +1,9 @@
 package com.samurai74.audiototextconverter.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.samurai74.audiototextconverter.config.AudioProcessorConfig;
 import com.samurai74.audiototextconverter.constant.Constants;
+import com.samurai74.audiototextconverter.mapper.VoskResult;
 import com.samurai74.audiototextconverter.service.TranscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import java.io.InputStream;
 public class VoskTranscriptionService implements TranscriptionService {
     private final Model model;
     private final AudioProcessorConfig audioProcessorConfig;
+    private final ObjectMapper objectMapper;
 
 
     @Override
@@ -39,7 +42,9 @@ public class VoskTranscriptionService implements TranscriptionService {
                 int bytesRead;
                 while((bytesRead=audioStream.read(buffer))>0){
                     if(recognizer.acceptWaveForm(buffer,bytesRead)){
-                        sb.append(recognizer.getResult());
+                        String jsonText =recognizer.getResult();
+                        VoskResult  voskResult = objectMapper.readValue(jsonText, VoskResult.class);
+                        sb.append(voskResult.getText());
                         log.info(sb.toString());
                     }
                     else {
@@ -49,7 +54,9 @@ public class VoskTranscriptionService implements TranscriptionService {
                         log.info("*********");
                     }
                 }
-                sb.append(recognizer.getFinalResult());
+                String jsonText =recognizer.getFinalResult();
+                VoskResult  voskResult = objectMapper.readValue(jsonText, VoskResult.class);
+                sb.append(voskResult.getText());
             }
             return sb.toString();
         }
