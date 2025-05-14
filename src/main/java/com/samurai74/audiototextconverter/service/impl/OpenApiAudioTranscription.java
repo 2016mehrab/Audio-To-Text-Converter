@@ -1,6 +1,6 @@
-package com.samurai74.audiototextconverter.services.impl;
+package com.samurai74.audiototextconverter.service.impl;
 
-import com.samurai74.audiototextconverter.services.TranscriptionService;
+import com.samurai74.audiototextconverter.service.TranscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;

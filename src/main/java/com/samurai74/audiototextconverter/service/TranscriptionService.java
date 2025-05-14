@@ -1,4 +1,4 @@
-package com.samurai74.audiototextconverter.services;
+package com.samurai74.audiototextconverter.service;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.multipart.MultipartFile;
