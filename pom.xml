@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.samurai74</groupId>
     <artifactId>audio-to-text-converter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>Audio to Text Converter</name>
     <description>Audio to Text Converter</description>
     <url/>
